@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:background="@color/colorBase"
+                                             android:id="@+id/visible_layout">
+    <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="10dp"
+            android:background="@color/colorMainCard" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp">
+        <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                     android:layout_height="match_parent">
+
+            <LinearLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_height="696dp"
+                    android:layout_width="362dp"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+            >
+                <EditText
+                        android:layout_margin="12dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Song Title / Artist"
+                        android:inputType="text"
+                        android:textColor="@color/colorBase"
+                        android:textSize="18sp"
+                        android:padding="12dp"
+                        android:textColorHint="@color/colorPrimaryDark"
+                        android:imeOptions="actionDone"
+                        android:singleLine="true"
+                        android:id="@+id/search_box"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/ic_search"
+                        android:background="@color/colorMainCard"/>
+                <android.support.v7.widget.RecyclerView
+                        android:id="@+id/searchRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent">
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>
