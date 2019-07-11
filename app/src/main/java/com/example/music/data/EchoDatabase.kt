@@ -1,9 +1,14 @@
 package com.example.music.data
 
+import android.Manifest
 import android.content.ContentValues
 import android.content.Context
+import android.content.pm.PackageManager
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.support.v4.app.ActivityCompat.requestPermissions
+import android.support.v4.app.ActivityCompat.shouldShowRequestPermissionRationale
+import android.support.v4.content.PermissionChecker.checkSelfPermission
 
 class EchoDatabase : SQLiteOpenHelper {
     var _songsList = ArrayList<Songs>()
@@ -110,6 +115,4 @@ class EchoDatabase : SQLiteOpenHelper {
         db.delete(EchoDatabase.Statified.TABLE_NAME, EchoDatabase.Statified.COLUMN_ID + "=" + _id, null)
         db.close()
     }
-
-
 }

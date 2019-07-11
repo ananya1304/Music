@@ -54,7 +54,7 @@ class SearchAdapter(_songDetails: ArrayList<Songs>, _context: Context?) : Recycl
             args.putParcelableArrayList("songsData", songDetails)
             songPlayingFragment.arguments = args
             (mContext as FragmentActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.details_fragment, songPlayingFragment)
+                .replace(R.id.flContent, songPlayingFragment)
                 .addToBackStack("SongPlayingFragment")
                 .commit()
         }

@@ -244,10 +244,10 @@ class SongPlayingFragment : Fragment()
             if (isShuffleAllowed as Boolean) {
                 currentSongHelper.isShuffle = true
                 currentSongHelper.isLoop = false
-                shuffleImageButton?.setBackgroundResource(R.drawable.ic_shuffle_on)
-                loopImageButton?.setBackgroundResource(R.drawable.ic_repeat)
+                shuffleImageButton?.setBackgroundResource(R.drawable.ic_shuffle_all)
+                loopImageButton?.setBackgroundResource(R.drawable.ic_repeat_none)
             } else {
-                shuffleImageButton?.setBackgroundResource(R.drawable.ic_shuffle)
+                shuffleImageButton?.setBackgroundResource(R.drawable.ic_shuffle_none)
                 currentSongHelper.isShuffle = false
             }
             var prefsforLoop = activity?.getSharedPreferences(MY_PREFS_LOOP, Context.MODE_PRIVATE)
@@ -255,12 +255,12 @@ class SongPlayingFragment : Fragment()
             if (isLoopAllowed as Boolean) {
                 currentSongHelper.isLoop = true
                 currentSongHelper.isShuffle = false
-                loopImageButton?.setBackgroundResource(R.drawable.ic_repeat_on)
-                shuffleImageButton?.setBackgroundResource(R.drawable.ic_shuffle)
+                loopImageButton?.setBackgroundResource(R.drawable.ic_repeat_all)
+                shuffleImageButton?.setBackgroundResource(R.drawable.ic_shuffle_none)
 
             } else {
                 currentSongHelper.isLoop = false
-                loopImageButton?.setBackgroundResource(R.drawable.ic_repeat)
+                loopImageButton?.setBackgroundResource(R.drawable.ic_repeat_none)
             }
         }
         catch (e:java.lang.Exception){
@@ -433,7 +433,7 @@ class SongPlayingFragment : Fragment()
                             Statified.currentSongHelper.isLoop = false
                             editorLoop?.putBoolean("feature", false)
                             editorLoop?.apply()
-                            Statified.loopImageButton?.setBackgroundResource(R.drawable.ic_repeat)
+                            Statified.loopImageButton?.setBackgroundResource(R.drawable.ic_repeat_none)
                             Toast.makeText(Statified.activity, "Loop Disabled", Toast.LENGTH_SHORT).show()
                         }
 
@@ -481,15 +481,15 @@ class SongPlayingFragment : Fragment()
                 val editorShuffle = Statified.activity?.getSharedPreferences(MY_PREFS_SHUFFLE, Context.MODE_PRIVATE)?.edit()
                 val editorLoop = Statified.activity?.getSharedPreferences(MY_PREFS_LOOP, Context.MODE_PRIVATE)?.edit()
                 if (currentSongHelper.isShuffle) {
-                    shuffleImageButton?.setBackgroundResource(R.drawable.ic_repeat)
+                    shuffleImageButton?.setBackgroundResource(R.drawable.ic_shuffle_none)
                     currentSongHelper.isShuffle = false
                     editorShuffle?.putBoolean("feature", false)
                     editorShuffle?.apply()
                 } else {
                     currentSongHelper.isShuffle = true
                     currentSongHelper.isLoop = false
-                    shuffleImageButton?.setBackgroundResource(R.drawable.ic_repeat_on)
-                    loopImageButton?.setBackgroundResource(R.drawable.ic_repeat)
+                    shuffleImageButton?.setBackgroundResource(R.drawable.ic_shuffle_all)
+                    loopImageButton?.setBackgroundResource(R.drawable.ic_repeat_none)
                     editorShuffle?.putBoolean("feature", true)
                     editorShuffle?.apply()
                     editorLoop?.putBoolean("feature", false)
@@ -500,15 +500,15 @@ class SongPlayingFragment : Fragment()
             fastforwardImageButton?.setOnClickListener {
                 currentSongHelper.isPlaying = true
                 if (currentSongHelper.isShuffle) {
-                    SongPlayingFragment.Staticated.playNext("playNextLikeNormalShuffle")
+                    Staticated.playNext("playNextLikeNormalShuffle")
                 } else {
-                    SongPlayingFragment.Staticated.playNext("PlayNextNormal")
+                    Staticated.playNext("PlayNextNormal")
                 }
             }
             rewindImageButton?.setOnClickListener {
                 currentSongHelper.isPlaying = true
                 if (currentSongHelper.isLoop) {
-                    loopImageButton?.setBackgroundResource(R.drawable.ic_repeat)
+                    loopImageButton?.setBackgroundResource(R.drawable.ic_repeat_none)
                 }
                 currentSongHelper.isLoop = false
                 playPrevious()
@@ -519,14 +519,14 @@ class SongPlayingFragment : Fragment()
                 val editorShuffle = Statified.activity?.getSharedPreferences(MY_PREFS_SHUFFLE, Context.MODE_PRIVATE)?.edit()
                 if (currentSongHelper.isLoop) {
                     currentSongHelper.isLoop = false
-                    loopImageButton?.setBackgroundResource(R.drawable.ic_repeat)
+                    loopImageButton?.setBackgroundResource(R.drawable.ic_repeat_none)
                     editorLoop?.putBoolean("feature", false)
                     editorLoop?.apply()
                 } else {
                     currentSongHelper.isLoop = true
                     currentSongHelper.isShuffle = false
-                    loopImageButton?.setBackgroundResource(R.drawable.ic_repeat)
-                    shuffleImageButton?.setBackgroundResource(R.drawable.ic_shuffle)
+                    loopImageButton?.setBackgroundResource(R.drawable.ic_repeat_all)
+                    shuffleImageButton?.setBackgroundResource(R.drawable.ic_shuffle_none)
                     editorLoop?.putBoolean("feature", true)
                     editorLoop?.apply()
                     editorShuffle?.putBoolean("feature", false)

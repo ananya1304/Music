@@ -55,7 +55,7 @@ class FavoriteAdapter(ctx: Context?, _songs: ArrayList<Songs>) : RecyclerView.Ad
             val songPlayingFragment = SongPlayingFragment()
             songPlayingFragment.arguments = args
             (mContext as FragmentActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.details_fragment, songPlayingFragment)
+                .replace(R.id.flContent, songPlayingFragment)
                 .addToBackStack("FavoriteToBackStack")
                 .commit()
         })

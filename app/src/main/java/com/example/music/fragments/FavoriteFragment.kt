@@ -191,7 +191,7 @@ class FavoriteFragment : Fragment() {
 
                 fr.arguments = bundle_to_be_sent
                 fragmentManager?.beginTransaction()
-                    ?.replace(R.id.details_fragment, fr)
+                    ?.replace(R.id.flContent, fr)
                     ?.addToBackStack("SongPlayingFragment")
                     ?.commit()
 
