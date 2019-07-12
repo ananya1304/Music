@@ -4,5 +4,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Sort</string>
-    <string name="action_back">Back to list</string>
+    <string name="text_value_player_notification" translatable="false">Player</string>
+
 </resources>

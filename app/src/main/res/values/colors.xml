@@ -6,4 +6,5 @@
     <color name="colorBase">#1054A8</color>
     <color name="colorMainCard">#D1CCCC</color>
     <color name="colorDark">#424242</color>
+    <color name="colorLight">#A6ECEBEB</color>
 </resources>

@@ -12,7 +12,7 @@ import com.example.music.fragments.SongPlayingFragment
 class BackgroundAudioService : Service() {
 
     override fun onBind(intent: Intent): IBinder? {
-        throw UnsupportedOperationException("Not yet implemented")
+        return null
     }
 
     override fun onCreate() {

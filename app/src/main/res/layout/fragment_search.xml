@@ -14,7 +14,8 @@ xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_paren
             app:cardCornerRadius="10dp"
             android:background="@color/colorMainCard" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp">
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp">
         <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                      android:layout_height="match_parent">
 
@@ -29,8 +30,8 @@ xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_paren
             >
                 <EditText
                         android:layout_margin="12dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="337dp"
+                        android:layout_height="50dp"
                         android:hint="Song Title / Artist"
                         android:inputType="text"
                         android:textColor="@color/colorBase"
@@ -42,11 +43,11 @@ xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_paren
                         android:id="@+id/search_box"
                         android:drawablePadding="10dp"
                         android:drawableLeft="@drawable/ic_search"
-                        android:background="@color/colorMainCard"/>
+                        android:background="@color/colorMainCard" android:paddingTop="16dp"/>
                 <android.support.v7.widget.RecyclerView
                         android:id="@+id/searchRecyclerView"
                         android:layout_width="match_parent"
-                        android:layout_height="fill_parent">
+                        android:layout_height="fill_parent" android:paddingTop="8dp">
                 </android.support.v7.widget.RecyclerView>
             </LinearLayout>
         </android.support.constraint.ConstraintLayout>

@@ -27,7 +27,7 @@ android:background="@color/colorBase">
             />
             <ImageButton
                     android:layout_width="67dp"
-                    android:layout_height="70dp" app:srcCompat="@drawable/ic_shuffle_none"
+                    android:layout_height="70dp"
                     android:id="@+id/shuffle" app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="16dp" android:layout_marginStart="16dp"
                     app:layout_constraintStart_toEndOf="@+id/favorite"
@@ -35,7 +35,7 @@ android:background="@color/colorBase">
             />
             <ImageButton
                     android:layout_width="67dp"
-                    android:layout_height="70dp" app:srcCompat="@drawable/ic_repeat_none"
+                    android:layout_height="70dp"
                     android:id="@+id/repeat" app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="16dp" android:layout_marginStart="16dp"
                     app:layout_constraintStart_toEndOf="@+id/shuffle"

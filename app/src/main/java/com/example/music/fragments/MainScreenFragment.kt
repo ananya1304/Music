@@ -1,6 +1,5 @@
 package com.example.music.fragments
 
-import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.media.MediaPlayer
@@ -26,11 +25,6 @@ import java.util.*
 import kotlin.collections.ArrayList
 import com.example.music.R.id.action_search
 import com.example.music.R.id.action_sort_recent
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
-import com.example.music.player.MainActivity
 
 
 class MainScreenFragment : Fragment() {
@@ -90,6 +84,7 @@ class MainScreenFragment : Fragment() {
         nowPlayingBottomBar = view.findViewById(R.id.bottomBar) as CardView
         songTitle = view.findViewById(R.id.textView) as TextView
         playPauseButton = view.findViewById(R.id.imageButton5) as ImageButton
+        playPauseButton?.setBackgroundResource(R.drawable.ic_play_small)
         (nowPlayingBottomBar as CardView).isClickable = false
         recyclerView = view.findViewById(R.id.mainRecyclerView) as RecyclerView
 
@@ -204,6 +199,7 @@ class MainScreenFragment : Fragment() {
                 nowPlayingBottomBar?.visibility = View.VISIBLE
             } else {
                 playPauseHelper.isPlaying = false
+
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -238,14 +234,15 @@ class MainScreenFragment : Fragment() {
         playPauseButton?.setOnClickListener {
             if (playPauseHelper.isPlaying as Boolean) {
                 playPauseHelper.isPlaying = false
-                playPauseButton?.setBackgroundResource(R.drawable.ic_play)
+
+                playPauseButton?.setBackgroundResource(R.drawable.ic_play_small)
                 SongPlayingFragment.Statified.mediaPlayer?.pause()
                 playPauseHelper.TrackPosition = SongPlayingFragment.Statified.mediaPlayer?.getCurrentPosition() as Int
             } else {
                 SongPlayingFragment.Statified.mediaPlayer?.seekTo(playPauseHelper.TrackPosition)
                 SongPlayingFragment.Statified.mediaPlayer?.start()
                 playPauseHelper.isPlaying = true
-                playPauseButton?.setBackgroundResource(R.drawable.ic_pause)
+                playPauseButton?.setBackgroundResource(R.drawable.ic_pause_small)
             }
         }
 

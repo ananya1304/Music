@@ -75,9 +75,9 @@ class FavoriteFragment : Fragment() {
         favouriteDatabase = EchoDatabase(activity)
         noFavourites = view?.findViewById(R.id.noFavourites) as TextView
         nowPlayingBottomBar = view.findViewById(R.id.bottomBar) as CardView
-        songTitle = view.findViewById(R.id.title) as TextView
+        songTitle = view.findViewById(R.id.textView) as TextView
         playPauseButton = view.findViewById(R.id.imageButton5) as ImageButton
-        (nowPlayingBottomBar as RelativeLayout).isClickable = false
+        (nowPlayingBottomBar as CardView).isClickable = false
         recyclerView = view.findViewById(R.id.favRecyclerView) as RecyclerView
         return view
     }
@@ -206,12 +206,12 @@ class FavoriteFragment : Fragment() {
                 SongPlayingFragment.Statified.mediaPlayer?.pause()
                 playPauseHelper.TrackPosition = mediaPlayer?.getCurrentPosition() as Int
                 playPauseHelper.isPlaying = false
-                playPauseButton?.setBackgroundResource(R.drawable.ic_play)
+                playPauseButton?.setBackgroundResource(R.drawable.ic_play_small)
             } else {
                 SongPlayingFragment.Statified.mediaPlayer?.seekTo(playPauseHelper.TrackPosition)
                 SongPlayingFragment.Statified.mediaPlayer?.start()
                 playPauseHelper.isPlaying = true
-                playPauseButton?.setBackgroundResource(R.drawable.ic_pause)
+                playPauseButton?.setBackgroundResource(R.drawable.ic_pause_small)
             }
         }
 

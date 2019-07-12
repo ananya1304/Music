@@ -28,6 +28,8 @@ import com.example.music.data.Songs
 import com.example.music.fragments.SongPlayingFragment.Statified.MY_PREFS_LOOP
 import com.example.music.fragments.SongPlayingFragment.Statified.MY_PREFS_SHUFFLE
 import com.example.music.fragments.SongPlayingFragment.Statified.UpdateSongTime
+import com.example.music.fragments.SongPlayingFragment.Statified._songArtist
+import com.example.music.fragments.SongPlayingFragment.Statified._songTitle
 import com.example.music.fragments.SongPlayingFragment.Statified.activity
 import com.example.music.fragments.SongPlayingFragment.Statified.currentPosition
 import com.example.music.fragments.SongPlayingFragment.Statified.currentSongHelper
@@ -83,6 +85,8 @@ class SongPlayingFragment : Fragment()
         var loopImageButton: ImageButton? = null
         var shuffleImageButton: ImageButton? = null
         var playlistImageButton: ImageButton? = null
+        var _songTitle: String? = null
+        var _songArtist: String? = null
         var UpdateSongTime = object : Runnable {
             override fun run() {
                 val getCurrent = mediaPlayer?.currentPosition
@@ -99,12 +103,12 @@ class SongPlayingFragment : Fragment()
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        SongPlayingFragment.Statified.activity = context as Activity?
+        Statified.activity = context as Activity?
     }
 
     override fun onAttach(activity: Activity?) {
         super.onAttach(activity)
-        SongPlayingFragment.Statified.activity = activity
+        Statified.activity = activity
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -120,7 +124,9 @@ class SongPlayingFragment : Fragment()
         fastforwardImageButton = (view.findViewById(R.id.next) as ImageButton)
         rewindImageButton = (view.findViewById(R.id.prev) as ImageButton)
         loopImageButton = (view.findViewById(R.id.repeat) as ImageButton)
+        loopImageButton?.setBackgroundResource(R.drawable.ic_repeat_none)
         shuffleImageButton = (view.findViewById(R.id.shuffle) as ImageButton)
+        shuffleImageButton?.setBackgroundResource(R.drawable.ic_shuffle_none)
         playlistImageButton = (view.findViewById(R.id.playlist) as ImageButton)
 
         fab = view.findViewById(R.id.favorite) as ImageButton
@@ -177,8 +183,7 @@ class SongPlayingFragment : Fragment()
             super.onActivityCreated(savedInstanceState)
             favouriteContent = EchoDatabase(activity)
             var path: String? = null
-            var _songTitle: String? = null
-            var _songArtist: String? = null
+
             var songId: Long = 0
             try {
                 path = arguments?.getString("path")
@@ -341,7 +346,7 @@ class SongPlayingFragment : Fragment()
                     }
                 }
                 var nextSong = fetchSongs?.get(currentPosition)
-                SongPlayingFragment.Statified.currentTrackHelper = nextSong?.songTitle
+                Statified.currentTrackHelper = nextSong?.songTitle
                 if (nextSong?.artist.equals("<unknown>", true)) {
                     currentSongHelper.songArtist = "unknown"
                 } else {

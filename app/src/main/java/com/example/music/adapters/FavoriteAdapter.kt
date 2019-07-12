@@ -3,6 +3,7 @@ package com.example.music.adapters
 import android.content.Context
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.support.constraint.ConstraintLayout
 import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -78,12 +79,12 @@ class FavoriteAdapter(ctx: Context?, _songs: ArrayList<Songs>) : RecyclerView.Ad
 
         var text_Artist: TextView
         var text_Title: TextView
-        var contentHolder: RelativeLayout
+        var contentHolder: ConstraintLayout
 
         init {
             text_Artist = view.findViewById(R.id.artist) as TextView
             text_Title = view.findViewById(R.id.song_name) as TextView
-            contentHolder = view.findViewById(R.id.contentRow) as RelativeLayout
+            contentHolder = view.findViewById(R.id.contentRow) as ConstraintLayout
         }
     }
 
