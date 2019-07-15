@@ -89,7 +89,7 @@ class MainScreenFragment : Fragment() {
         recyclerView = view.findViewById(R.id.mainRecyclerView) as RecyclerView
 
 
-        playPauseHelper?.isPlaying = false
+        playPauseHelper.isPlaying = false
         //make the no songs layout visible
         if (getSongsList == null) {
             getSongsList = getSongsfromPhone()
@@ -117,6 +117,15 @@ class MainScreenFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        if(playPauseHelper.isPlaying as Boolean)
+        {
+            playPauseButton?.setBackgroundResource(R.drawable.ic_pause_small)
+
+        }
+        else{
+            playPauseButton?.setBackgroundResource(R.drawable.ic_play_small)
+
+        }
         Log.d("MainScreen", " onResume")
     }
 
@@ -185,7 +194,7 @@ class MainScreenFragment : Fragment() {
         return arrayList
     }
 
-    fun bottomBar_setup() {
+    private fun bottomBar_setup() {
         nowPlayingBottomBar?.isClickable = false
         bottomBarOnClickHandlers()
         try {
@@ -199,6 +208,7 @@ class MainScreenFragment : Fragment() {
                 nowPlayingBottomBar?.visibility = View.VISIBLE
             } else {
                 playPauseHelper.isPlaying = false
+
 
             }
         } catch (e: Exception) {
@@ -237,8 +247,10 @@ class MainScreenFragment : Fragment() {
 
                 playPauseButton?.setBackgroundResource(R.drawable.ic_play_small)
                 SongPlayingFragment.Statified.mediaPlayer?.pause()
-                playPauseHelper.TrackPosition = SongPlayingFragment.Statified.mediaPlayer?.getCurrentPosition() as Int
-            } else {
+                if(SongPlayingFragment.Statified.mediaPlayer?.currentPosition != null) {
+                    playPauseHelper.TrackPosition = SongPlayingFragment.Statified.mediaPlayer?.currentPosition as Int
+                }
+            } else{
                 SongPlayingFragment.Statified.mediaPlayer?.seekTo(playPauseHelper.TrackPosition)
                 SongPlayingFragment.Statified.mediaPlayer?.start()
                 playPauseHelper.isPlaying = true

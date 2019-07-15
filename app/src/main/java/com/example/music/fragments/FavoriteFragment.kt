@@ -60,6 +60,19 @@ class FavoriteFragment : Fragment() {
         _activity = activity
     }
 
+    override fun onResume() {
+        super.onResume()
+        if(playPauseHelper.isPlaying as Boolean)
+        {
+            playPauseButton?.setBackgroundResource(R.drawable.ic_pause_small)
+
+        }
+        else{
+            playPauseButton?.setBackgroundResource(R.drawable.ic_play_small)
+
+        }
+    }
+
     override fun onActivityCreated(@Nullable savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -83,10 +96,6 @@ class FavoriteFragment : Fragment() {
     }
 
 
-    override fun onResume() {
-        super.onResume()
-    }
-
     fun display_favorites_by_searching() {
         if (favouriteDatabase?.checkSize() as Int > 0) {
             noFavourites?.visibility = View.INVISIBLE
@@ -94,9 +103,9 @@ class FavoriteFragment : Fragment() {
             _getSongs = (favouriteDatabase as EchoDatabase).queryDBforList()
             val fetchList = getListfromStorage()
             if (fetchList != null) {
-                for (i in 0..fetchList?.size-1) {
-                    for (j in 0.._getSongs?.size as Int-1) {
-                        if ((_getSongs as ArrayList<Songs>).get(j).songID === fetchList?.get(i).songID) {
+                for (i in 0 until fetchList.size) {
+                    for (j in 0 until _getSongs?.size as Int) {
+                        if ((_getSongs as ArrayList<Songs>).get(j).songID === fetchList.get(i).songID) {
                             (refreshList as ArrayList<Songs>).add((_getSongs as ArrayList<Songs>)[j])
                         } else {
                         }
@@ -124,7 +133,7 @@ class FavoriteFragment : Fragment() {
         }
     }
 
-    fun getListfromStorage(): ArrayList<Songs>? {
+    private fun getListfromStorage(): ArrayList<Songs>? {
 
         val arrayList = ArrayList<Songs>()
         val contentResolver = activity?.contentResolver
@@ -204,7 +213,9 @@ class FavoriteFragment : Fragment() {
             if (playPauseHelper.isPlaying as Boolean) {
 
                 SongPlayingFragment.Statified.mediaPlayer?.pause()
-                playPauseHelper.TrackPosition = mediaPlayer?.getCurrentPosition() as Int
+                if(mediaPlayer?.currentPosition != null) {
+                    playPauseHelper.TrackPosition = mediaPlayer?.currentPosition as Int
+                }
                 playPauseHelper.isPlaying = false
                 playPauseButton?.setBackgroundResource(R.drawable.ic_play_small)
             } else {
